@@ -21,7 +21,7 @@
             android:id="@+id/preference_switch_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/TextAppearance.AppCompat.Body1"
+            style="@style/PreferenceTitleText"
             android:maxLines="1"
             tools:text="Preference title"/>
 
@@ -29,7 +29,7 @@
             android:id="@+id/preference_switch_body"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            style="@style/TextAppearance.AppCompat.Caption"
+            style="@style/PreferenceDetailText"
             tools:text="Preference description"/>
 
     </LinearLayout>
