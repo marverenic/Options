@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.marverenic.options.Option;
 import com.marverenic.options.OptionFragment;
+import com.marverenic.options.types.OptionHeader;
 import com.marverenic.options.types.sharedpreferences.SharedPreferenceSwitchOption;
 import com.marverenic.options.types.sharedpreferences.SharedPreferencesCheckOption;
 
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         public List<Option> createOptionList() {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
 
-            return Arrays.asList(new Option[] {
+            return Arrays.asList(
+                    new OptionHeader("Toggle Options"),
                     new SharedPreferenceSwitchOption.Builder()
                             .setSharedPreferences(prefs)
                             .setKey("switch-1")
@@ -46,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
                             .setEnabledDescription("CheckBox 1 is enabled")
                             .setDisabledDescription("CheckBox 1 is disabled")
                             .setDefaultValue(true)
-                            .build(),
-            });
+                            .build());
         }
     }
 }
