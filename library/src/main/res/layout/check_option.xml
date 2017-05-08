@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/preference_padding"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/preference_check_toggle"
+        android:layout_toStartOf="@+id/preference_check_toggle"
+        android:layout_marginEnd="@dimen/preference_padding"
+        android:layout_marginRight="@dimen/preference_padding">
+
+        <TextView
+            android:id="@+id/preference_check_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:maxLines="1"
+            tools:text="Preference title"/>
+
+        <TextView
+            android:id="@+id/preference_check_body"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="@style/TextAppearance.AppCompat.Caption"
+            tools:text="Preference description"/>
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/preference_check_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
