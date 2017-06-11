@@ -11,6 +11,7 @@ import com.marverenic.options.types.MultiSelectOption;
 import com.marverenic.options.types.OptionHeader;
 import com.marverenic.options.types.sharedpreferences.SharedPreferenceSwitchOption;
 import com.marverenic.options.types.sharedpreferences.SharedPreferencesCheckOption;
+import com.marverenic.options.types.sharedpreferences.dialog.SharedPreferencesIntDialogOption;
 import com.marverenic.options.types.sharedpreferences.dialog.SharedPreferencesStringDialogOption;
 import com.marverenic.options.types.sharedpreferences.dropdown.SharedPreferencesIntDropdownOption;
 import com.marverenic.options.types.sharedpreferences.dropdown.SharedPreferencesStringDropdownOption;
@@ -78,6 +79,19 @@ public class MainActivity extends AppCompatActivity {
                             ))
                             .build(),
                 new OptionHeader("Dialog Options"),
+                    new SharedPreferencesIntDialogOption.Builder()
+                            .setSharedPreferences(prefs)
+                            .setKey("int-select-2")
+                            .setTitle("Integer Dialog")
+                            .setDefaultValue(0)
+                            .setValues(Arrays.asList(
+                                    new MultiSelectOption.Selection<>("None", 0),
+                                    new MultiSelectOption.Selection<>("One", 1),
+                                    new MultiSelectOption.Selection<>("A Couple", 2),
+                                    new MultiSelectOption.Selection<>("Several", 3),
+                                    new MultiSelectOption.Selection<>("Many", 4)
+                            ))
+                            .build(),
                     new SharedPreferencesStringDialogOption.Builder()
                             .setSharedPreferences(prefs)
                             .setKey("string-select-2")
