@@ -132,6 +132,7 @@ public abstract class DialogListOption<T extends Parcelable> extends MultiSelect
         private void postResult(T selected) {
             if (getTargetFragment() == null) {
                 Log.w(TAG, "No target fragment to send result to. Dropping selection.");
+                return;
             }
 
             Intent data = new Intent();
