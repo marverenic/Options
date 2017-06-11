@@ -14,9 +14,9 @@ public class SharedPreferencesCheckOption extends CheckOption {
     private String mDescriptionOn;
     private String mDescriptionOff;
 
-    SharedPreferencesCheckOption(SharedPreferences sharedPreferences,
-                                 String key, boolean defaultValue,
-                                 String title, String descriptionOn, String descriptionOff) {
+    private SharedPreferencesCheckOption(SharedPreferences sharedPreferences,
+                                         String key, boolean defaultValue,
+                                         String title, String descriptionOn, String descriptionOff) {
         mSharedPreferences = sharedPreferences;
         mKey = key;
         mDefaultValue = defaultValue;

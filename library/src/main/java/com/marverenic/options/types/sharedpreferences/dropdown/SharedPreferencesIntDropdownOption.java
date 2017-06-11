@@ -15,9 +15,9 @@ public class SharedPreferencesIntDropdownOption extends DropdownOption<Integer> 
     private String mTitle;
     private List<Selection<Integer>> mValues;
 
-    SharedPreferencesIntDropdownOption(SharedPreferences sharedPreferences, String key,
-                                       int defaultValue, String title,
-                                       List<Selection<Integer>> values) {
+    private SharedPreferencesIntDropdownOption(SharedPreferences sharedPreferences, String key,
+                                               int defaultValue, String title,
+                                               List<Selection<Integer>> values) {
         mSharedPreferences = sharedPreferences;
         mKey = key;
         mDefaultValue = defaultValue;

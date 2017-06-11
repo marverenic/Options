@@ -15,9 +15,9 @@ public class SharedPreferencesStringDropdownOption extends DropdownOption<String
     private String mTitle;
     private List<Selection<String>> mValues;
 
-    SharedPreferencesStringDropdownOption(SharedPreferences sharedPreferences, String key,
-                                          String defaultValue, String title,
-                                          List<Selection<String>> values) {
+    private SharedPreferencesStringDropdownOption(SharedPreferences sharedPreferences, String key,
+                                                  String defaultValue, String title,
+                                                  List<Selection<String>> values) {
         mSharedPreferences = sharedPreferences;
         mKey = key;
         mDefaultValue = defaultValue;

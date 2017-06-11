@@ -14,9 +14,9 @@ public class SharedPreferenceSwitchOption extends SwitchOption {
     private String mDescriptionOn;
     private String mDescriptionOff;
 
-    SharedPreferenceSwitchOption(SharedPreferences sharedPreferences,
-                                 String key, boolean defaultValue,
-                                 String title, String descriptionOn, String descriptionOff) {
+    private SharedPreferenceSwitchOption(SharedPreferences sharedPreferences,
+                                         String key, boolean defaultValue,
+                                         String title, String descriptionOn, String descriptionOff) {
         mSharedPreferences = sharedPreferences;
         mKey = key;
         mDefaultValue = defaultValue;

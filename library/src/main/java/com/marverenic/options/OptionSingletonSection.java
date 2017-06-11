@@ -11,7 +11,7 @@ class OptionSingletonSection extends HeterogeneousAdapter.SingletonSection<Optio
     private Option mOption;
     private View mOptionView;
 
-    public OptionSingletonSection(Option option) {
+    OptionSingletonSection(Option option) {
         super(option);
         mOption = option;
     }

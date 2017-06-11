@@ -16,9 +16,9 @@ public class SharedPreferencesStringDialogOption extends DialogListOption<Parcel
     private String mTitle;
     private List<Selection<ParcelableString>> mValues;
 
-    SharedPreferencesStringDialogOption(SharedPreferences sharedPreferences, String key,
-                                        String defaultValue, String title,
-                                        List<Selection<String>> values) {
+    private SharedPreferencesStringDialogOption(SharedPreferences sharedPreferences, String key,
+                                                String defaultValue, String title,
+                                                List<Selection<String>> values) {
         mSharedPreferences = sharedPreferences;
         mKey = key;
         mDefaultValue = defaultValue;
