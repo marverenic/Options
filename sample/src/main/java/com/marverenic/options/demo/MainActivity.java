@@ -11,8 +11,8 @@ import com.marverenic.options.types.MultiSelectOption;
 import com.marverenic.options.types.OptionHeader;
 import com.marverenic.options.types.sharedpreferences.SharedPreferenceSwitchOption;
 import com.marverenic.options.types.sharedpreferences.SharedPreferencesCheckOption;
-import com.marverenic.options.types.sharedpreferences.SharedPreferencesIntDropdownOption;
-import com.marverenic.options.types.sharedpreferences.SharedPreferencesStringDropdownOption;
+import com.marverenic.options.types.sharedpreferences.dropdown.SharedPreferencesIntDropdownOption;
+import com.marverenic.options.types.sharedpreferences.dropdown.SharedPreferencesStringDropdownOption;
 
 import java.util.Arrays;
 import java.util.List;

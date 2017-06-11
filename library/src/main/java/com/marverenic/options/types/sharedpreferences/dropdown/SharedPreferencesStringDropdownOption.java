@@ -1,4 +1,4 @@
-package com.marverenic.options.types.sharedpreferences;
+package com.marverenic.options.types.sharedpreferences.dropdown;
 
 import android.content.SharedPreferences;
 
