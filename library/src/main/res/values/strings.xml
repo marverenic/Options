@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Options</string>
+
+    <string name="action_cancel">Cancel</string>
 </resources>

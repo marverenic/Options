@@ -11,6 +11,7 @@ import com.marverenic.options.types.MultiSelectOption;
 import com.marverenic.options.types.OptionHeader;
 import com.marverenic.options.types.sharedpreferences.SharedPreferenceSwitchOption;
 import com.marverenic.options.types.sharedpreferences.SharedPreferencesCheckOption;
+import com.marverenic.options.types.sharedpreferences.dialog.SharedPreferencesStringDialogOption;
 import com.marverenic.options.types.sharedpreferences.dropdown.SharedPreferencesIntDropdownOption;
 import com.marverenic.options.types.sharedpreferences.dropdown.SharedPreferencesStringDropdownOption;
 
@@ -75,7 +76,21 @@ public class MainActivity extends AppCompatActivity {
                                     new MultiSelectOption.Selection<>("Sometimes", "medium"),
                                     new MultiSelectOption.Selection<>("Always", "high")
                             ))
-                            .build());
+                            .build(),
+                new OptionHeader("Dialog Options"),
+                    new SharedPreferencesStringDialogOption.Builder()
+                            .setSharedPreferences(prefs)
+                            .setKey("string-select-2")
+                            .setTitle("String Dialog")
+                            .setDefaultValue("orange")
+                            .setValues(Arrays.asList(
+                                    new MultiSelectOption.Selection<>("Red", "red"),
+                                    new MultiSelectOption.Selection<>("Orange", "orange"),
+                                    new MultiSelectOption.Selection<>("Yellow", "yellow"),
+                                    new MultiSelectOption.Selection<>("Green", "green")
+                            ))
+                            .build()
+            );
         }
     }
 }

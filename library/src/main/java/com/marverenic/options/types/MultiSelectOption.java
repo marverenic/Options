@@ -11,15 +11,17 @@ public abstract class MultiSelectOption<T> extends Option {
     public abstract T getValue();
 
     public Selection<T> getSelection() {
-        T selected = getValue();
+        return getSelectionByValue(getValue());
+    }
 
+    protected Selection<T> getSelectionByValue(T value) {
         for (Selection<T> selection : getValues()) {
-            if (selection.getValue().equals(selected)) {
+            if (selection.getValue().equals(value)) {
                 return selection;
             }
         }
 
-        throw new IllegalArgumentException(selected + " is not a valid value");
+        throw new IllegalArgumentException(value + " is not a valid value");
     }
 
     public abstract void onNewValue(Selection<T> value);
