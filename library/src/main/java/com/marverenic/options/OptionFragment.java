@@ -10,8 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.marverenic.adapter.HeterogeneousAdapter;
-
 import java.util.List;
 
 public abstract class OptionFragment extends Fragment {
@@ -33,20 +31,9 @@ public abstract class OptionFragment extends Fragment {
 
         RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.options_fragment_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(createAdapter());
+        recyclerView.setAdapter(new OptionAdapter(mOptions));
 
         return root;
-    }
-
-    private HeterogeneousAdapter createAdapter() {
-        HeterogeneousAdapter adapter = new HeterogeneousAdapter();
-
-        for (Option option : mOptions) {
-            option.attach(this);
-            adapter.addSection(new OptionSingletonSection(option));
-        }
-
-        return adapter;
     }
 
     @Override
