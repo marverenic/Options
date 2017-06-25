@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class OptionFragment extends Fragment {
@@ -21,7 +23,7 @@ public abstract class OptionFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mOptions = createOptionList();
+        mOptions = Collections.unmodifiableList(new ArrayList<>(createOptionList()));
     }
 
     @Override
