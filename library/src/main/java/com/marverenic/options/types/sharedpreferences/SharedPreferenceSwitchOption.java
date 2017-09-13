@@ -2,6 +2,7 @@ package com.marverenic.options.types.sharedpreferences;
 
 import android.content.SharedPreferences;
 
+import com.marverenic.options.OptionBuilder;
 import com.marverenic.options.types.SwitchOption;
 
 public class SharedPreferenceSwitchOption extends SwitchOption {
@@ -52,7 +53,7 @@ public class SharedPreferenceSwitchOption extends SwitchOption {
         }
     }
 
-    public static class Builder {
+    public static class Builder implements OptionBuilder<SharedPreferenceSwitchOption> {
 
         private SharedPreferences mSharedPreferences;
         private String mKey;
