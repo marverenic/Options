@@ -62,9 +62,17 @@ public class SharedPreferencesStringDropdownOption extends DropdownOption<String
             return this;
         }
 
+        public SharedPreferences getSharedPreferences() {
+            return mSharedPreferences;
+        }
+
         public Builder setKey(String key) {
             mKey = key;
             return this;
+        }
+
+        public String getKey() {
+            return mKey;
         }
 
         public Builder setDefaultValue(String defaultValue) {
@@ -72,14 +80,26 @@ public class SharedPreferencesStringDropdownOption extends DropdownOption<String
             return this;
         }
 
+        public String getDefaultValue() {
+            return mDefaultValue;
+        }
+
         public Builder setTitle(String title) {
             mTitle = title;
             return this;
         }
 
+        public String getTitle() {
+            return mTitle;
+        }
+
         public Builder setValues(List<Selection<String>> values) {
             mValues = values;
             return this;
+        }
+
+        public List<Selection<String>> getValues() {
+            return mValues;
         }
 
         @Override

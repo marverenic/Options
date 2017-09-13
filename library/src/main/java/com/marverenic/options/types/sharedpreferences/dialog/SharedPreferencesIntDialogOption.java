@@ -73,9 +73,17 @@ public class SharedPreferencesIntDialogOption extends DialogListOption<Parcelabl
             return this;
         }
 
+        public SharedPreferences getSharedPreferences() {
+            return mSharedPreferences;
+        }
+
         public Builder setKey(String key) {
             mKey = key;
             return this;
+        }
+
+        public String getKey() {
+            return mKey;
         }
 
         public Builder setDefaultValue(int defaultValue) {
@@ -83,14 +91,26 @@ public class SharedPreferencesIntDialogOption extends DialogListOption<Parcelabl
             return this;
         }
 
+        public int defaultValue() {
+            return mDefaultValue;
+        }
+
         public Builder setTitle(String title) {
             mTitle = title;
             return this;
         }
 
+        public String getTitle() {
+            return mTitle;
+        }
+
         public Builder setValues(List<Selection<Integer>> values) {
             mValues = values;
             return this;
+        }
+
+        public List<Selection<Integer>> getValues() {
+            return mValues;
         }
 
         @Override

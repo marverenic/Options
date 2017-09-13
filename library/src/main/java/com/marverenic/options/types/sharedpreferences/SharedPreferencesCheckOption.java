@@ -70,9 +70,17 @@ public class SharedPreferencesCheckOption extends CheckOption {
             return this;
         }
 
+        public SharedPreferences getSharedPreferences() {
+            return mSharedPreferences;
+        }
+
         public Builder setKey(String key) {
             mKey = key;
             return this;
+        }
+
+        public String getKey() {
+            return mKey;
         }
 
         public Builder setDefaultValue(boolean defaultValue) {
@@ -80,9 +88,17 @@ public class SharedPreferencesCheckOption extends CheckOption {
             return this;
         }
 
+        public boolean getDefaultValue() {
+            return mDefaultValue;
+        }
+
         public Builder setTitle(String title) {
             mTitle = title;
             return this;
+        }
+
+        public String getTitle() {
+            return mTitle;
         }
 
         public Builder setDescription(String description) {
@@ -91,14 +107,26 @@ public class SharedPreferencesCheckOption extends CheckOption {
             return this;
         }
 
+        public String getDescription() {
+            return mDescriptionOn;
+        }
+
         public Builder setEnabledDescription(String description) {
             mDescriptionOn = description;
             return this;
         }
 
+        public String getEnabledDescription() {
+            return mDescriptionOn;
+        }
+
         public Builder setDisabledDescription(String description) {
             mDescriptionOff = description;
             return this;
+        }
+
+        public String getDisabledDescription() {
+            return mDescriptionOff;
         }
 
         @Override
