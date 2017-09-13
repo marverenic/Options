@@ -2,6 +2,7 @@ package com.marverenic.options.types.sharedpreferences.dropdown;
 
 import android.content.SharedPreferences;
 
+import com.marverenic.options.OptionBuilder;
 import com.marverenic.options.types.DropdownOption;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class SharedPreferencesStringDropdownOption extends DropdownOption<String
         return mTitle;
     }
 
-    public static class Builder {
+    public static class Builder implements OptionBuilder<SharedPreferencesStringDropdownOption> {
 
         private SharedPreferences mSharedPreferences;
         private String mKey;
@@ -81,6 +82,7 @@ public class SharedPreferencesStringDropdownOption extends DropdownOption<String
             return this;
         }
 
+        @Override
         public SharedPreferencesStringDropdownOption build() {
             if (mSharedPreferences == null) {
                 throw new IllegalArgumentException("SharedPreferences cannot be null");
