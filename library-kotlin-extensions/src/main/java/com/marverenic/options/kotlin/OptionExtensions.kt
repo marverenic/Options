@@ -14,17 +14,15 @@ inline fun optionsOf(init: OptionCollection.() -> Unit): List<Option> {
             .toList()
 }
 
-inline fun switchOption(init: SwitchBuilder.() -> Unit): SwitchBuilder {
-    return SharedPreferenceSwitchOption.Builder()
-            .apply(init)
-}
-
-inline fun checkOption(init: CheckBuilder.() -> Unit): CheckBuilder {
-    return SharedPreferencesCheckOption.Builder()
-            .apply(init)
-}
-
 class OptionCollection(private val options: MutableList<Option> = mutableListOf()) {
+
+    inline fun switchOption(init: SwitchBuilder.() -> Unit) {
+        + SharedPreferenceSwitchOption.Builder().apply(init)
+    }
+
+    inline fun checkOption(init: CheckBuilder.() -> Unit) {
+        + SharedPreferencesCheckOption.Builder().apply(init)
+    }
 
     operator fun OptionBuilder<*>.unaryPlus() {
         options += this.build()
