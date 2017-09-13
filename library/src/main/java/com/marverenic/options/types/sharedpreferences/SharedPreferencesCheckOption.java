@@ -2,6 +2,7 @@ package com.marverenic.options.types.sharedpreferences;
 
 import android.content.SharedPreferences;
 
+import com.marverenic.options.OptionBuilder;
 import com.marverenic.options.types.CheckOption;
 
 public class SharedPreferencesCheckOption extends CheckOption {
@@ -52,7 +53,7 @@ public class SharedPreferencesCheckOption extends CheckOption {
         }
     }
 
-    public static class Builder {
+    public static class Builder implements OptionBuilder<SharedPreferencesCheckOption> {
 
         private SharedPreferences mSharedPreferences;
         private String mKey;
@@ -100,6 +101,7 @@ public class SharedPreferencesCheckOption extends CheckOption {
             return this;
         }
 
+        @Override
         public SharedPreferencesCheckOption build() {
             if (mSharedPreferences == null) {
                 throw new IllegalArgumentException("SharedPreferences cannot be null");
