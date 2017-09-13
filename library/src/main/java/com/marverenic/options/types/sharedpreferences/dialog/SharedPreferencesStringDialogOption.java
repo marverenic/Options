@@ -2,6 +2,7 @@ package com.marverenic.options.types.sharedpreferences.dialog;
 
 import android.content.SharedPreferences;
 
+import com.marverenic.options.OptionBuilder;
 import com.marverenic.options.types.DialogListOption;
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class SharedPreferencesStringDialogOption extends DialogListOption<Parcel
         return mKey.hashCode();
     }
 
-    public static class Builder {
+    public static class Builder implements OptionBuilder<SharedPreferencesStringDialogOption> {
 
         private SharedPreferences mSharedPreferences;
         private String mKey;
@@ -92,6 +93,7 @@ public class SharedPreferencesStringDialogOption extends DialogListOption<Parcel
             return this;
         }
 
+        @Override
         public SharedPreferencesStringDialogOption build() {
             if (mSharedPreferences == null) {
                 throw new IllegalArgumentException("SharedPreferences cannot be null");

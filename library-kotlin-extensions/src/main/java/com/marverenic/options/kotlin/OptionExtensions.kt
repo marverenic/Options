@@ -4,6 +4,8 @@ import com.marverenic.options.Option
 import com.marverenic.options.OptionBuilder
 import com.marverenic.options.types.sharedpreferences.SharedPreferenceSwitchOption
 import com.marverenic.options.types.sharedpreferences.SharedPreferencesCheckOption
+import com.marverenic.options.types.sharedpreferences.dialog.SharedPreferencesIntDialogOption
+import com.marverenic.options.types.sharedpreferences.dialog.SharedPreferencesStringDialogOption
 import com.marverenic.options.types.sharedpreferences.dropdown.SharedPreferencesIntDropdownOption
 import com.marverenic.options.types.sharedpreferences.dropdown.SharedPreferencesStringDropdownOption
 
@@ -11,6 +13,8 @@ private typealias SwitchBuilder = SharedPreferenceSwitchOption.Builder
 private typealias CheckBuilder = SharedPreferencesCheckOption.Builder
 private typealias StringDropdownBuilder = SharedPreferencesStringDropdownOption.Builder
 private typealias IntDropdownBuilder = SharedPreferencesIntDropdownOption.Builder
+private typealias StringDialogBuilder = SharedPreferencesStringDialogOption.Builder
+private typealias IntDialogBuilder = SharedPreferencesIntDialogOption.Builder
 
 
 inline fun optionsOf(init: OptionCollection.() -> Unit): List<Option> {
@@ -35,6 +39,14 @@ class OptionCollection(private val options: MutableList<Option> = mutableListOf(
 
     inline fun intDropdownOption(init: IntDropdownBuilder.() -> Unit) {
         + SharedPreferencesIntDropdownOption.Builder().apply(init)
+    }
+
+    inline fun intDialogOption(init: IntDialogBuilder.() -> Unit) {
+        + SharedPreferencesIntDialogOption.Builder().apply(init)
+    }
+
+    inline fun stringDialogOption(init: StringDialogBuilder.() -> Unit) {
+        + SharedPreferencesStringDialogOption.Builder().apply(init)
     }
 
     operator fun OptionBuilder<*>.unaryPlus() {
