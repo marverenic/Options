@@ -3,7 +3,9 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0-beta5'
 
@@ -15,10 +17,15 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        maven {
-            url 'https://maven.google.com'
-        }
+        google()
     }
+}
+
+ext {
+    targetSdkVersion = 26
+    minSdkVersion = 14
+    buildToolsVersion = '26.0.0'
+    supportLibVersion = '26.0.2'
 }
 
 task clean(type: Delete) {
