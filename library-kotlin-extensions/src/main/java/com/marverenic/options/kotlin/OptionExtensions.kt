@@ -3,6 +3,7 @@ package com.marverenic.options.kotlin
 import android.content.SharedPreferences
 import com.marverenic.options.Option
 import com.marverenic.options.OptionBuilder
+import com.marverenic.options.types.OptionHeader
 import com.marverenic.options.types.sharedpreferences.SharedPreferenceSwitchOption
 import com.marverenic.options.types.sharedpreferences.SharedPreferencesCheckOption
 import com.marverenic.options.types.sharedpreferences.dialog.SharedPreferencesIntDialogOption
@@ -74,6 +75,10 @@ class OptionCollection(
             this.key = key
             init()
         }
+    }
+
+    fun header(title: String) {
+        + OptionHeader(title)
     }
 
     operator fun OptionBuilder<*>.unaryPlus() {
