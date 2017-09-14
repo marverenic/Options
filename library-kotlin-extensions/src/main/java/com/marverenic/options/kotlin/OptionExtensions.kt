@@ -1,5 +1,6 @@
 package com.marverenic.options.kotlin
 
+import android.content.SharedPreferences
 import com.marverenic.options.Option
 import com.marverenic.options.OptionBuilder
 import com.marverenic.options.types.sharedpreferences.SharedPreferenceSwitchOption
@@ -16,37 +17,63 @@ private typealias IntDropdownBuilder = SharedPreferencesIntDropdownOption.Builde
 private typealias StringDialogBuilder = SharedPreferencesStringDialogOption.Builder
 private typealias IntDialogBuilder = SharedPreferencesIntDialogOption.Builder
 
-
-inline fun optionsOf(init: OptionCollection.() -> Unit): List<Option> {
-    return OptionCollection()
+inline fun optionsOf(sharedPreferences: SharedPreferences,
+                     init: OptionCollection.() -> Unit): List<Option> {
+    return OptionCollection(sharedPreferences)
             .apply(init)
             .toList()
 }
 
-class OptionCollection(private val options: MutableList<Option> = mutableListOf()) {
+class OptionCollection(
+        val sharedPrefs: SharedPreferences,
+        private val options: MutableList<Option> = mutableListOf()) {
 
-    inline fun switchOption(init: SwitchBuilder.() -> Unit) {
-        + SharedPreferenceSwitchOption.Builder().apply(init)
+    inline fun switchOption(key: String, init: SwitchBuilder.() -> Unit) {
+        + SharedPreferenceSwitchOption.Builder().apply {
+            this.sharedPreferences = sharedPrefs
+            this.key = key
+            init()
+        }
     }
 
-    inline fun checkOption(init: CheckBuilder.() -> Unit) {
-        + SharedPreferencesCheckOption.Builder().apply(init)
+    inline fun checkOption(key: String, init: CheckBuilder.() -> Unit) {
+        + SharedPreferencesCheckOption.Builder().apply {
+            this.sharedPreferences = sharedPrefs
+            this.key = key
+            init()
+        }
     }
 
-    inline fun stringDropdownOption(init: StringDropdownBuilder.() -> Unit) {
-        + SharedPreferencesStringDropdownOption.Builder().apply(init)
+    inline fun stringDropdownOption(key: String, init: StringDropdownBuilder.() -> Unit) {
+        + SharedPreferencesStringDropdownOption.Builder().apply {
+            this.sharedPreferences = sharedPrefs
+            this.key = key
+            init()
+        }
     }
 
-    inline fun intDropdownOption(init: IntDropdownBuilder.() -> Unit) {
-        + SharedPreferencesIntDropdownOption.Builder().apply(init)
+    inline fun intDropdownOption(key: String, init: IntDropdownBuilder.() -> Unit) {
+        + SharedPreferencesIntDropdownOption.Builder().apply {
+            this.sharedPreferences = sharedPrefs
+            this.key = key
+            init()
+        }
     }
 
-    inline fun intDialogOption(init: IntDialogBuilder.() -> Unit) {
-        + SharedPreferencesIntDialogOption.Builder().apply(init)
+    inline fun intDialogOption(key: String, init: IntDialogBuilder.() -> Unit) {
+        + SharedPreferencesIntDialogOption.Builder().apply {
+            this.sharedPreferences = sharedPrefs
+            this.key = key
+            init()
+        }
     }
 
-    inline fun stringDialogOption(init: StringDialogBuilder.() -> Unit) {
-        + SharedPreferencesStringDialogOption.Builder().apply(init)
+    inline fun stringDialogOption(key: String, init: StringDialogBuilder.() -> Unit) {
+        + SharedPreferencesStringDialogOption.Builder().apply {
+            this.sharedPreferences = sharedPrefs
+            this.key = key
+            init()
+        }
     }
 
     operator fun OptionBuilder<*>.unaryPlus() {
