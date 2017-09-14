@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                             "Red" to "red",
                             "Orange" to "orange",
                             "Yellow" to "yellow",
-                            "Green" to "green
+                            "Green" to "green"
                     )
                 }
             }
