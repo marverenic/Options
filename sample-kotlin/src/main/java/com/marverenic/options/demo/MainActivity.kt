@@ -6,15 +6,8 @@ import android.support.v7.app.AppCompatActivity
 import com.marverenic.options.Option
 import com.marverenic.options.OptionFragment
 import com.marverenic.options.demo.kotlin.R
-import com.marverenic.options.types.MultiSelectOption
-import com.marverenic.options.types.OptionHeader
-import com.marverenic.options.types.sharedpreferences.SharedPreferenceSwitchOption
-import com.marverenic.options.types.sharedpreferences.SharedPreferencesCheckOption
-import com.marverenic.options.types.sharedpreferences.dialog.SharedPreferencesIntDialogOption
-import com.marverenic.options.types.sharedpreferences.dialog.SharedPreferencesStringDialogOption
-import com.marverenic.options.types.sharedpreferences.dropdown.SharedPreferencesIntDropdownOption
-import com.marverenic.options.types.sharedpreferences.dropdown.SharedPreferencesStringDropdownOption
-import java.util.*
+import com.marverenic.options.kotlin.optionsOf
+import com.marverenic.options.kotlin.selectionsOf
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,76 +23,66 @@ class MainActivity : AppCompatActivity() {
     class PreferenceFragment : OptionFragment() {
 
         override fun createOptionList(): List<Option> {
-            val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+            val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+            return optionsOf(sharedPreferences) {
+                header(title = "Toggle Options")
+                switchOption(key = "switch-1") {
+                    title = "Switch 1"
+                    enabledDescription = "Switch 1 is enabled"
+                    disabledDescription = "Switch 1 is disabled"
+                }
+                checkOption(key = "check-1") {
+                    title = "CheckBox 1"
+                    enabledDescription = "CheckBox 1 is enabled"
+                    disabledDescription = "CheckBox 1 is disabled"
+                }
 
-            return Arrays.asList(
-                    OptionHeader("Toggle Options"),
-                    SharedPreferenceSwitchOption.Builder()
-                            .setSharedPreferences(prefs)
-                            .setKey("switch-1")
-                            .setTitle("Switch 1")
-                            .setEnabledDescription("Switch 1 is enabled")
-                            .setDisabledDescription("Switch 1 is disabled")
-                            .build(),
-                    SharedPreferencesCheckOption.Builder()
-                            .setSharedPreferences(prefs)
-                            .setKey("check-1")
-                            .setTitle("CheckBox 1")
-                            .setEnabledDescription("CheckBox 1 is enabled")
-                            .setDisabledDescription("CheckBox 1 is disabled")
-                            .setDefaultValue(true)
-                            .build(),
-                    OptionHeader("Dropdown Options"),
-                    SharedPreferencesIntDropdownOption.Builder()
-                            .setSharedPreferences(prefs)
-                            .setKey("int-select-1")
-                            .setTitle("Integer Dropdown")
-                            .setDefaultValue(4)
-                            .setValues(Arrays.asList(
-                                    MultiSelectOption.Selection("One", 1),
-                                    MultiSelectOption.Selection("Two", 2),
-                                    MultiSelectOption.Selection("Three", 3),
-                                    MultiSelectOption.Selection("Four", 4)
-                            ))
-                            .build(),
-                    SharedPreferencesStringDropdownOption.Builder()
-                            .setSharedPreferences(prefs)
-                            .setKey("string-select-1")
-                            .setTitle("String Dropdown")
-                            .setDefaultValue("medium")
-                            .setValues(Arrays.asList(
-                                    MultiSelectOption.Selection("Never", "low"),
-                                    MultiSelectOption.Selection("Sometimes", "medium"),
-                                    MultiSelectOption.Selection("Always", "high")
-                            ))
-                            .build(),
-                    OptionHeader("Dialog Options"),
-                    SharedPreferencesIntDialogOption.Builder()
-                            .setSharedPreferences(prefs)
-                            .setKey("int-select-2")
-                            .setTitle("Integer Dialog")
-                            .setDefaultValue(0)
-                            .setValues(Arrays.asList(
-                                    MultiSelectOption.Selection("None", 0),
-                                    MultiSelectOption.Selection("One", 1),
-                                    MultiSelectOption.Selection("A Couple", 2),
-                                    MultiSelectOption.Selection("Several", 3),
-                                    MultiSelectOption.Selection("Many", 4)
-                            ))
-                            .build(),
-                    SharedPreferencesStringDialogOption.Builder()
-                            .setSharedPreferences(prefs)
-                            .setKey("string-select-2")
-                            .setTitle("String Dialog")
-                            .setDefaultValue("orange")
-                            .setValues(Arrays.asList(
-                                    MultiSelectOption.Selection("Red", "red"),
-                                    MultiSelectOption.Selection("Orange", "orange"),
-                                    MultiSelectOption.Selection("Yellow", "yellow"),
-                                    MultiSelectOption.Selection("Green", "green")
-                            ))
-                            .build()
-            )
+
+                header(title = "Dropdown options")
+                intDropdownOption(key = "int-select-1") {
+                    title = "Integer Dropdown"
+                    defaultValue = 4
+                    values = selectionsOf(
+                            "One" to 1,
+                            "Two" to 2,
+                            "Three" to 3,
+                            "Four" to 4
+                    )
+                }
+                stringDropdownOption(key = "string-select-1") {
+                    title = "String Dropdown"
+                    defaultValue = "medium"
+                    values = selectionsOf(
+                            "Never" to "low",
+                            "Sometimes" to "medium",
+                            "Always" to "high"
+                    )
+                }
+
+
+                header(title = "Dialog options")
+                intDialogOption(key = "int-select-2") {
+                    title = "Integer Dialog"
+                    defaultValue = 0
+                    values = selectionsOf(
+                            "None" to 0,
+                            "One" to 1,
+                            "A Couple" to 2,
+                            "Several" to 3,
+                            "Mnay" to 4
+                    )
+                }
+                stringDialogOption(key = "string-select-2") {
+                    title = "String Dialog"
+                    defaultValue = "orange"
+                    values = selectionsOf(
+                            "Red" to "red",
+                            "Orange" to "orange",
+                            "Yellow" to "yellow",
+                            "Green" to "green
+                    )
+                }
+            }
         }
     }
 }
