@@ -1,1 +1,1 @@
-include ':sample', ':library', ':library-kotlin-extensions'
+include ':sample', ':sample-kotlin', ':library', ':library-kotlin-extensions'
