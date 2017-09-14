@@ -3,6 +3,7 @@ package com.marverenic.options.kotlin
 import android.content.SharedPreferences
 import com.marverenic.options.Option
 import com.marverenic.options.OptionBuilder
+import com.marverenic.options.types.MultiSelectOption
 import com.marverenic.options.types.OptionHeader
 import com.marverenic.options.types.sharedpreferences.SharedPreferenceSwitchOption
 import com.marverenic.options.types.sharedpreferences.SharedPreferencesCheckOption
@@ -24,6 +25,11 @@ inline fun optionsOf(sharedPreferences: SharedPreferences,
             .apply(init)
             .toList()
 }
+
+fun <T> selectionsOf(vararg selections: Pair<String, T>) =
+        selections.map { (key, value) ->
+            MultiSelectOption.Selection(key, value)
+        }
 
 class OptionCollection(
         val sharedPrefs: SharedPreferences,
