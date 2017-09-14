@@ -91,7 +91,7 @@ public class SharedPreferencesIntDialogOption extends DialogListOption<Parcelabl
             return this;
         }
 
-        public int defaultValue() {
+        public int getDefaultValue() {
             return mDefaultValue;
         }
 
