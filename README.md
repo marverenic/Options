@@ -1,5 +1,5 @@
 # Options
-Options is a library for building setting pages on Android as an alternative to the [`PreferenceFragment`](https://developer.android.com/reference/android/preference/PreferenceFragment.html) and [`PreferenceFragmentCompat`](https://developer.android.com/reference/android/support/v7/preference/PreferenceFragmentCompat.html) classes provided by Google. Unlike PreferenceFragment, Options allows additional setting types to be easily declared using a straightforward interface and adds abstractions tht enable you to store your preferences outside of [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences.html). Options also has a straightforward way of programmatically creating settings pages with convenient extensions if you're using Kotlin in your project.
+Options is a library for building setting pages on Android as an alternative to the [`PreferenceFragment`](https://developer.android.com/reference/android/preference/PreferenceFragment.html) and [`PreferenceFragmentCompat`](https://developer.android.com/reference/android/support/v7/preference/PreferenceFragmentCompat.html) classes provided by Google. Unlike PreferenceFragment, Options allows additional setting types to be easily declared using a straightforward interface that includes the ability to easily store your preferences outside of [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences.html). Options also has a straightforward way of programmatically creating settings pages. There are also Kotlin extensions which make this even easier.
 
 ## Getting Started
 Like `PreferenceFragment`, `OptionFragment` is the base class that's used to show preference screens. To show your first option page, create a class that extends from `OptionFragment` as shown below:
@@ -74,3 +74,6 @@ optionsOf(sharedPreferences) {
 ```
 
 See the [Kotlin sample activity](https://github.com/marverenic/Options/blob/master/sample-kotlin/src/main/java/com/marverenic/options/demo/MainActivity.kt) for an example of all available Options.
+
+## License
+Options is licensed under an Apache License, Version 2.0.
