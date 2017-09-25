@@ -31,9 +31,9 @@ public abstract class OptionFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.options_fragment, container, false);
 
-        RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.options_fragment_list);
+        RecyclerView recyclerView = root.findViewById(R.id.options_fragment_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new OptionAdapter(mOptions));
+        recyclerView.setAdapter(new OptionAdapter(this, mOptions));
 
         return root;
     }
