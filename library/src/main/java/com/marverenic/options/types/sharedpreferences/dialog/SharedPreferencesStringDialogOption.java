@@ -2,6 +2,7 @@ package com.marverenic.options.types.sharedpreferences.dialog;
 
 import android.content.SharedPreferences;
 
+import com.marverenic.options.OptionBuilder;
 import com.marverenic.options.types.DialogListOption;
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class SharedPreferencesStringDialogOption extends DialogListOption<Parcel
         return mKey.hashCode();
     }
 
-    public static class Builder {
+    public static class Builder implements OptionBuilder<SharedPreferencesStringDialogOption> {
 
         private SharedPreferences mSharedPreferences;
         private String mKey;
@@ -72,9 +73,17 @@ public class SharedPreferencesStringDialogOption extends DialogListOption<Parcel
             return this;
         }
 
+        public SharedPreferences getSharedPreferences() {
+            return mSharedPreferences;
+        }
+
         public Builder setKey(String key) {
             mKey = key;
             return this;
+        }
+
+        public String getKey() {
+            return mKey;
         }
 
         public Builder setDefaultValue(String defaultValue) {
@@ -82,9 +91,17 @@ public class SharedPreferencesStringDialogOption extends DialogListOption<Parcel
             return this;
         }
 
+        public String getDefaultValue() {
+            return mDefaultValue;
+        }
+
         public Builder setTitle(String title) {
             mTitle = title;
             return this;
+        }
+
+        public String getTitle() {
+            return mTitle;
         }
 
         public Builder setValues(List<Selection<String>> values) {
@@ -92,6 +109,11 @@ public class SharedPreferencesStringDialogOption extends DialogListOption<Parcel
             return this;
         }
 
+        public List<Selection<String>> getValues() {
+            return mValues;
+        }
+
+        @Override
         public SharedPreferencesStringDialogOption build() {
             if (mSharedPreferences == null) {
                 throw new IllegalArgumentException("SharedPreferences cannot be null");

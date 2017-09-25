@@ -2,6 +2,7 @@ package com.marverenic.options.types.sharedpreferences.dropdown;
 
 import android.content.SharedPreferences;
 
+import com.marverenic.options.OptionBuilder;
 import com.marverenic.options.types.DropdownOption;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class SharedPreferencesIntDropdownOption extends DropdownOption<Integer> 
         return mTitle;
     }
 
-    public static class Builder {
+    public static class Builder implements OptionBuilder<SharedPreferencesIntDropdownOption> {
 
         private SharedPreferences mSharedPreferences;
         private String mKey;
@@ -61,9 +62,17 @@ public class SharedPreferencesIntDropdownOption extends DropdownOption<Integer> 
             return this;
         }
 
+        public SharedPreferences getSharedPreferences() {
+            return mSharedPreferences;
+        }
+
         public Builder setKey(String key) {
             mKey = key;
             return this;
+        }
+
+        public String getKey() {
+            return mKey;
         }
 
         public Builder setDefaultValue(int defaultValue) {
@@ -71,9 +80,17 @@ public class SharedPreferencesIntDropdownOption extends DropdownOption<Integer> 
             return this;
         }
 
+        public int getDefaultValue() {
+            return mDefaultValue;
+        }
+
         public Builder setTitle(String title) {
             mTitle = title;
             return this;
+        }
+
+        public String getTitle() {
+            return mTitle;
         }
 
         public Builder setValues(List<Selection<Integer>> values) {
@@ -81,6 +98,11 @@ public class SharedPreferencesIntDropdownOption extends DropdownOption<Integer> 
             return this;
         }
 
+        public List<Selection<Integer>> getValues() {
+            return mValues;
+        }
+
+        @Override
         public SharedPreferencesIntDropdownOption build() {
             if (mSharedPreferences == null) {
                 throw new IllegalArgumentException("SharedPreferences cannot be null");
