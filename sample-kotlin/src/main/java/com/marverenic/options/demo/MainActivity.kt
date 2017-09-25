@@ -1,13 +1,17 @@
 package com.marverenic.options.demo
 
+import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.provider.Settings
 import android.support.v7.app.AppCompatActivity
 import com.marverenic.options.Option
 import com.marverenic.options.OptionFragment
 import com.marverenic.options.demo.kotlin.R
 import com.marverenic.options.kotlin.optionsOf
 import com.marverenic.options.kotlin.selectionsOf
+
+private const val SUB_SETTINGS_TAG = "subpanel"
 
 class MainActivity : AppCompatActivity() {
 
@@ -82,7 +86,29 @@ class MainActivity : AppCompatActivity() {
                             "Green" to "green"
                     )
                 }
+
+                header(title = "Link Options")
+                activityOption(
+                        title = "Device settings",
+                        description = "Open settings activity",
+                        intent = Intent(Settings.ACTION_SETTINGS)
+                )
+                fragmentOption(
+                        title = "More Settings",
+                        description = "Submenu",
+                        fragment = SubPreferenceFragment(),
+                        tag = SUB_SETTINGS_TAG
+                )
             }
         }
+    }
+
+    class SubPreferenceFragment : OptionFragment() {
+
+        override fun createOptionList(): List<Option> {
+            return emptyList<Option>()
+        }
+
+
     }
 }

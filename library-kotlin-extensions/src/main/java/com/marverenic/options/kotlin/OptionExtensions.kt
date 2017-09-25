@@ -1,8 +1,12 @@
 package com.marverenic.options.kotlin
 
+import android.content.Intent
 import android.content.SharedPreferences
+import android.support.v4.app.Fragment
 import com.marverenic.options.Option
 import com.marverenic.options.OptionBuilder
+import com.marverenic.options.types.ActivityOption
+import com.marverenic.options.types.FragmentOption
 import com.marverenic.options.types.MultiSelectOption
 import com.marverenic.options.types.OptionHeader
 import com.marverenic.options.types.sharedpreferences.SharedPreferenceSwitchOption
@@ -81,6 +85,15 @@ class OptionCollection(
             this.key = key
             init()
         }
+    }
+
+    fun activityOption(title: String? = null, description: String? = null, intent: Intent) {
+        + ActivityOption(title, description, intent)
+    }
+
+    fun fragmentOption(title: String? = null, description: String? = null,
+                       fragment: Fragment, tag: String) {
+        + FragmentOption(title, description, fragment, tag)
     }
 
     fun header(title: String) {
