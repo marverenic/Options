@@ -9,9 +9,11 @@ import java.util.List;
 
 class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.OptionViewHolder> {
 
+    private OptionFragment mFragment;
     private List<Option> mOptions;
 
-    OptionAdapter(List<Option> options) {
+    OptionAdapter(OptionFragment fragment, List<Option> options) {
+        mFragment = fragment;
         mOptions = options;
     }
 
@@ -25,7 +27,9 @@ class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.OptionViewHolder>
         // We use itemViewTypes as indices so that each Option is guaranteed to have a non-recycled
         // item view. This reduces performance, but should be negligible considering the size of
         // a typical settings page.
-        View itemView = mOptions.get(itemViewType).createView(parent);
+        Option option = mOptions.get(itemViewType);
+        option.attach(mFragment);
+        View itemView = option.createView(parent);
         return new OptionViewHolder(itemView);
     }
 
