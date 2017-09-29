@@ -1,4 +1,9 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.marverenic.options'
+version = '1.0'
 
 android {
     compileSdkVersion rootProject.targetSdkVersion
@@ -25,4 +30,48 @@ dependencies {
 
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
     implementation "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+
+    pkg {
+        repo = 'Options'
+        name = 'com.marverenic.options'
+
+        version {
+            name = '1.0'
+            released  = new Date()
+            vcsTag = 'v1.0'
+        }
+
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/marverenic/Options'
+        websiteUrl = 'https://github.com/marverenic/Options'
+    }
+    configurations = ['archives']
+}
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    destinationDir = file("../javadoc/")
+    failOnError false
+}
+
+task generateJavadocsJar(type: Jar) {
+    from javadoc.destinationDir
+    classifier 'javadoc'
+    dependsOn javadoc
+}
+
+artifacts {
+    archives generateJavadocsJar
+    archives generateSourcesJar
 }
