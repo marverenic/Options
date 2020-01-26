@@ -1,4 +1,12 @@
-# Options
+# Options (Deprecated)
+
+⚠ **Options is deprecated** as of January 26, 2020.
+This library will continue to work, but will not receive support or updates.
+Consider using the [Jetpack Preference library](https://developer.android.com/jetpack/androidx/releases/preference) from Google instead.
+[Read more](https://andrewbailey.dev/post/2020/01/26/rebranding-marverenic).
+
+---
+
 Options is a library for building setting pages on Android as an alternative to the [`PreferenceFragment`](https://developer.android.com/reference/android/preference/PreferenceFragment.html) and [`PreferenceFragmentCompat`](https://developer.android.com/reference/android/support/v7/preference/PreferenceFragmentCompat.html) classes provided by Google. Unlike PreferenceFragment, Options allows additional setting types to be easily declared using a straightforward interface that includes the ability to easily store your preferences outside of [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences.html). Options also has a straightforward way of programmatically creating settings pages. There are also Kotlin extensions which make this even easier.
 
 ## Getting Started
